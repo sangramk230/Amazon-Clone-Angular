@@ -11,7 +11,7 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   adminLogin(email: string, password: string){
-    return this.http.get<Boolean>(`http://localhost:8081/api/admin/login/admin/${email}/${password}`); 
+    return this.http.get<Boolean>(`http://localhost:8081/api/admin/login/${email}/${password}`); 
   }
 
   adminProfile(){

@@ -12,46 +12,37 @@ import { AdminService } from './admin.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit{
-  navHide : boolean = true;
+export class AppComponent{
+  showNavbar: boolean = false;
   constructor(private router: Router,private adminService:AdminService){
-    
-  }
-  ngOnInit(): void {
-    this.checkRoute(this.router.url);
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.checkRoute(event.url);
-      }
-    });
-  }
-  checkRoute(url: string) {
-    if (url === '/admin/login') {
-      this.navHide = false;
-    } else {
-      this.navHide = true;
-    }
-  }
   
-  loadProduct() {
-    this.router.navigateByUrl('/admin/add-product');
+  }
+    loadProduct() {
+    this.router.navigateByUrl('/admin/add-product').then(()=>{
+      window.location.replace('/admin/add-product');})
   }
   loadProfile(){
-    this.router.navigateByUrl('/admin/profile');
+    this.router.navigateByUrl('/admin/profile').then(()=>{
+      window.location.replace('/admin/profile');})
   }
   loadHome(){
-    this.router.navigateByUrl('/admin/home');
+    this.router.navigateByUrl('/admin/home').then(()=>{
+      window.location.replace('/admin/home');})
   }
   loadReport(){
-    this.router.navigateByUrl('/admin/report');
+    this.router.navigateByUrl('/admin/report').then(()=>{
+      window.location.replace('/admin/report');})
   }
   loadCategories(){
-    this.router.navigateByUrl('/admin/categories');
+    this.router.navigateByUrl('/admin/categories').then(()=>{
+      window.location.replace('/admin/categories');})
   }
   loadUser(){
-    this.router.navigateByUrl('/admin/all-users');
+    this.router.navigateByUrl('/admin/all-users').then(()=>{
+      window.location.replace('/admin/all-users');})
   }
   loadApproval(){
-    this.router.navigateByUrl('/admin/approval');
+    this.router.navigateByUrl('/admin/approval').then(()=>{
+      window.location.replace('/admin/approval');})
   }
 }

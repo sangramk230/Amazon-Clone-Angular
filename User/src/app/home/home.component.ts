@@ -79,4 +79,5 @@ export class HomeComponent {
       this.productsToDisplay = this.products;
     }
   }
+ 
 }

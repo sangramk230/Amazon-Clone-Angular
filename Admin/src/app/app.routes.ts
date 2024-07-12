@@ -20,5 +20,5 @@ export const routes: Routes = [
     {path:'admin/categories',component:CategoriesComponent},
     {path:'admin/report',component:ReportComponent},
     {path:'admin/app',component:AppComponent},
-    { path: '**', redirectTo: 'admin/login',pathMatch: 'full', }
+    { path: '**', redirectTo: '/admin/login',pathMatch: 'full', }
 ];
