@@ -1,0 +1,82 @@
+<body class="d-flex justify-content-center align-items-center">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-4 carousel-fade">
+        <div *ngIf="signupDiv" class="card shadow-lg">
+          <div class="card-body">
+            <h5 class="card-title text-center mb-4">Signup</h5>
+            <form>
+              <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" id="name" class="form-control" placeholder="Enter Full Name" name="name" [(ngModel)]="user.name">
+              </div>
+  
+              <div class="mb-3">
+                <label for="gender" class="form-label">Gender</label>
+                <select id="gender" class="form-control" [(ngModel)]="user.gender">
+                  <option value="" disabled selected hidden>Choose Gender</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+                </select>
+              </div>
+  
+              <div class="mb-3">
+                <label for="dob" class="form-label">Date Of Birth</label>
+                <input type="date" id="dob" class="form-control" name="dob" [(ngModel)]="user.dob">
+              </div>
+  
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" class="form-control" placeholder="Enter Email" name="email" [(ngModel)]="user.email">
+              </div>
+  
+              <div class="mb-3">
+                <label for="phoneno" class="form-label">Phone No</label>
+                <input type="tel" id="phoneno" class="form-control" placeholder="Enter Phone No" name="phoneno" [(ngModel)]="user.phoneno">
+              </div>
+  
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" class="form-control" placeholder="Enter Password" name="password" [(ngModel)]="user.password">
+              </div>
+  
+              <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" id="confirmPassword" class="form-control" placeholder="Enter Confirm Password" name="confirmPassword" [(ngModel)]="user.confirmpassword">
+              </div>
+  
+              <div class="mb-3">
+                <label for="image" class="form-label">Profile Image</label>
+                <input type="file" id="image" class="form-control" (change)="handleFileInput($event)">
+              </div>
+  
+              <button type="button" class="btn btn-primary w-100" (click)="signup()">Signup</button>
+            </form>
+            <p class="text-center mt-3">Already have an account? <a href="javascript:void(0)" (click)="toggleLogin()">Login</a></p>
+          </div>
+        </div>
+        <div *ngIf="loginDiv" class="card mt-6 shadow-lg">
+          <div class="card-body">
+            <h5 class="card-title text-center mb-4">User Login</h5>
+            <form>
+              <div class="mb-3">
+                <label for="loginEmail" class="form-label">Email</label>
+                <input type="email" id="loginEmail" class="form-control" placeholder="Enter Email" name="email" [(ngModel)]="user.email">
+              </div>
+  
+              <div class="mb-3">
+                <label for="loginPassword" class="form-label">Password</label>
+                <input type="password" id="loginPassword" class="form-control" placeholder="Enter Password" name="password" [(ngModel)]="user.password">
+              </div>
+  
+              <button type="button" class="btn btn-primary w-100" (click)="login()">Login</button>
+            </form>
+            <p class="text-center mt-3">Don't have an account? <a href="javascript:void(0)" (click)="toggleSignup()">Signup</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>

@@ -1,0 +1,24 @@
+<div class="container-fluid mt-1" style="padding-top: 5%;">
+    <div class="row justify-content-center">
+      <div class="col-md-4 carousel-fade">
+        <div class="card mt-6 shadow-lg">
+            <div class="card-body">
+            <h5 class="card-title text-center mb-4">Admin Login</h5>
+            <form>
+                <div class="mb-3">
+                <label for="loginEmail" class="form-label">Email</label>
+                <input type="email" id="loginEmail" class="form-control" placeholder="Enter Email" name="email" [(ngModel)]="admin.email">
+                </div>
+
+                <div class="mb-3">
+                <label for="loginPassword" class="form-label">Password</label>
+                <input type="password" id="loginPassword" class="form-control" placeholder="Enter Password" name="password" [(ngModel)]="admin.password">
+                </div>
+
+                <button type="button" class="btn btn-primary w-100" (click)="login()">Login</button>
+            </form>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>

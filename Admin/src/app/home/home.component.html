@@ -1,0 +1,34 @@
+
+<main class="container-fluid">
+  <table class="table table-bordered">
+    <thead>
+      <tr style="text-align: center;">
+        <th>Image</th>
+        <th>Name</th>
+        <th>Brand</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let products of product">
+        <td><img [src]="products.image" alt="image" style="width: 100px; height: 100px;"></td>
+        <td>{{ products.name }}</td>
+        <td>{{ products.brand }}</td>
+        <td>{{ products.price }}</td>
+        <td>{{ products.category }}</td>
+        <td>{{ products.description }}</td>
+        <td>{{ products.quantity }}</td>
+        <td>
+          <button type="submit" class="btn btn-danger m-1" (click)="delProduct(products.productid)">Delete</button>
+          <button type="submit" class="btn btn-danger m-1" (click)="loadUpdateProduct(products)">Update</button>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+</main>

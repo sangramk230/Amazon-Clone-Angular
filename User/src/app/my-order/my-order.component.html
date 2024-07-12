@@ -1,0 +1,64 @@
+<body class="d-flex justify-content-center align-items-center">
+  
+<div class="container" *ngIf="first">
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4" *ngFor="let product of products">
+      <div class="card p-2 h-100 justify-content-center">
+          <img [src]="product.image" class="card-img-top img-fluid" alt="{{ product.name }}">
+          <div class="card-body">
+            <h6 class="card-title align-self-center">{{ product.name }}</h6>
+            <p class="card-text">
+              <strong>Price:</strong> {{ product.price | currency:'INR' }}<br>
+              <strong>Quantity:</strong> {{ product.quantity }}<br>
+              <strong>Address:</strong> {{ product.address }}<br>
+              <strong>Email:</strong> {{ product.email }}<br>
+              <strong>Contact:</strong> {{ product.contact }}<br>
+              <strong class="text-warning">{{ product.status }}</strong>
+
+            </p>
+          </div>
+          <div class="mt-auto align-self-end">
+            <button type="button" class="btn btn-primary me-1" (click)="delProductBuy(product.productid)">Cancel</button>
+            <button type="button" class="btn btn-primary" (click)="loadUpdate(product)">Update</button>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="container w-25" *ngIf="second">
+  <div class="mt-4"  >
+    <form *ngIf="updatedProduct" >
+      <div class="form-group" [hidden]="true">
+        <input type="text" class="form-control" id="productImage" [(ngModel)]="updatedProduct.image" name="image" required>
+        <input type="number" class="form-control" id="productPrice" [(ngModel)]="updatedProduct.price" name="price" required>
+        <input type="text" class="form-control" id="productStatus" [(ngModel)]="updatedProduct.status" name="status" required>
+      </div>
+      <img [src]="updatedProduct.image" class="card-img-top img-fluid" alt="{{ updatedProduct.name }}">
+      <div class="form-group">
+        <label for="productName">Product Name</label>
+        <input type="text" class="form-control" id="productName" disabled [(ngModel)]="updatedProduct.name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="productQuantity">Quantity</label>
+        <input type="number" class="form-control" id="productQuantity" [(ngModel)]="updatedProduct.quantity" name="quantity" required>
+      </div>
+      <div class="form-group">
+        <label for="productAddress">Address</label>
+        <input type="text" class="form-control" id="productAddress" [(ngModel)]="updatedProduct.address" name="address" required>
+      </div>
+      <div class="form-group">
+        <label for="productEmail">Email</label>
+        <input type="email" class="form-control" id="productEmail" [(ngModel)]="updatedProduct.email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="productContact">Contact</label>
+        <input type="text" class="form-control" id="productContact" [(ngModel)]="updatedProduct.contact" name="contact" required>
+      </div>
+      <button type="submit" class="btn btn-success" (click)="updateProductBuy(updatedProduct)">Add Product</button>
+    </form>
+  </div>
+  
+</div>
+
+</body>

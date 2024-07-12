@@ -1,0 +1,13 @@
+@keyframes slideIn {
+    from { opacity: 0; }
+    to { opacity: 2; }
+  }
+
+  .navbar-nav .nav-item {
+    animation: slideIn 0.3s ease-in-out;
+  }
+  body{
+    animation: slideIn 0.5s ease-in-out;
+  }
+
+  

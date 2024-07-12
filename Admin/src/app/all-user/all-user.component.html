@@ -1,0 +1,22 @@
+<main class="container-fluid">
+    <table class="table table-bordered mt-3" *ngIf="userAll.length > 0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of userAll">
+          <td>{{ user.userid }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="userAll.length === 0" class="text-center mt-3">No users to display.</div>
+  </main>
+  
