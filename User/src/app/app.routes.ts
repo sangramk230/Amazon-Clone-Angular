@@ -13,5 +13,6 @@ export const routes: Routes = [
     {path:'user/my-order',component:MyOrderComponent},
     {path:'user/cart',component:CartComponent},
     {path:'user/check', component:CheckOutComponent},
+    {path:'hh',component:HomeComponent},
     { path: '', redirectTo: 'user/home', pathMatch: 'full' }
 ];

@@ -18,6 +18,7 @@ export class CheckOutComponent implements OnInit {
   email: string = '';
   address: string = '';
   contact: number = 0;
+  total: number = 0;
   first: boolean = false;
   second: boolean = false;
 
@@ -27,8 +28,9 @@ export class CheckOutComponent implements OnInit {
     this.products = ProductService.products;
     this.products.forEach(product=>{
       product.price = product.quantity * product.price;
-    })
-    console.log('sele'+ this.selectedProduct , 'pro'+this.products)
+      this.total += product.price;
+       
+    });
   }
 
   ngOnInit(): void {

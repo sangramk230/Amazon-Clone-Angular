@@ -1,51 +1,33 @@
 <header>
-  <nav class="navbar navbar-expand-sm bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-        <ul class="navbar-nav mb-2 mb-lg-0 cursor-pointer">
+        <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link text-white" (click)="loadHome()">Home</a>
+            <a class="nav-link" (click)="loadHome()">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" (click)="loadProduct()">Product</a>
+            <a class="nav-link" (click)="loadProduct()">Product</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" (click)="loadApproval()">Approval</a>
+            <a class="nav-link" (click)="loadApproval()">Approval</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" (click)="loadCategories()">Category</a>
+            <a class="nav-link" (click)="loadCategories()">Category</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" (click)="loadUser()">User</a>
+            <a class="nav-link" (click)="loadUser()">User</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" (click)="loadReport()">Analytics</a>
-          </li>
-          <li class="nav-item">
-            <div class="bg-body-tertiary p-0" style="border:1px solid black; border-radius: 10px;">
-              <form class="d-flex align-items-center" role="search">
-                <select class="form-select me-2" style="border: none;">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                </select>
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="border: none;">
-                <button class="btn btn-outline-success" type="submit" style="border: none;">Search</button>
-              </form>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" (click)="loadProfile()">Profile</a>
+            <a class="nav-link" (click)="loadProfile()">Profile</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 </header>
-<body>
-  <router-outlet></router-outlet>
-</body>
+
+<router-outlet></router-outlet>

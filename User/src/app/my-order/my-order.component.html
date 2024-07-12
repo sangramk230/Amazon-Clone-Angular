@@ -1,40 +1,39 @@
-<body class="d-flex justify-content-center align-items-center">
-  
-<div class="container" *ngIf="first">
+<div *ngIf="first" style="margin-top: 2%; margin-left: 3%; margin-right: 3%;">
   <div class="row">
-    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4" *ngFor="let product of products">
-      <div class="card p-2 h-100 justify-content-center">
-          <img [src]="product.image" class="card-img-top img-fluid" alt="{{ product.name }}">
-          <div class="card-body">
-            <h6 class="card-title align-self-center">{{ product.name }}</h6>
-            <p class="card-text">
-              <strong>Price:</strong> {{ product.price | currency:'INR' }}<br>
-              <strong>Quantity:</strong> {{ product.quantity }}<br>
-              <strong>Address:</strong> {{ product.address }}<br>
-              <strong>Email:</strong> {{ product.email }}<br>
-              <strong>Contact:</strong> {{ product.contact }}<br>
-              <strong class="text-warning">{{ product.status }}</strong>
-
-            </p>
-          </div>
-          <div class="mt-auto align-self-end">
+    <div *ngFor="let product of products" class="col-lg-3 col-md-6 mb-4">
+      <div class="card shadow-sm border-light product-card">
+        <img [src]="product.image" class="img-top" alt="{{ product.name }}">
+        <p>
+          <strong>Brand:</strong> {{ product.brand }} <br>
+        </p>
+        <div class="card-body">
+          <h6 class="card-title">{{ product.name }}</h6>
+          <p class="card-text">
+            <strong>Price:</strong> {{ product.price | currency: 'INR' }} <br>
+            <strong>Quantity:</strong> {{ product.quantity }}<br>
+            <strong>Address:</strong> {{ product.address }}<br>
+            <strong>Email:</strong> {{ product.email }}<br>
+            <strong>Contact:</strong> {{ product.contact }}<br>
+            <strong class="text-warning">{{ product.status }}</strong>
+          </p>
+          <div class="button-container d-flex justify-content-between mt-2">
             <button type="button" class="btn btn-primary me-1" (click)="delProductBuy(product.productid)">Cancel</button>
             <button type="button" class="btn btn-primary" (click)="loadUpdate(product)">Update</button>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </div>
-
 <div class="container w-25" *ngIf="second">
-  <div class="mt-4"  >
-    <form *ngIf="updatedProduct" >
+  <div class="mt-4">
+    <form *ngIf="updatedProduct">
       <div class="form-group" [hidden]="true">
         <input type="text" class="form-control" id="productImage" [(ngModel)]="updatedProduct.image" name="image" required>
         <input type="number" class="form-control" id="productPrice" [(ngModel)]="updatedProduct.price" name="price" required>
         <input type="text" class="form-control" id="productStatus" [(ngModel)]="updatedProduct.status" name="status" required>
       </div>
-      <img [src]="updatedProduct.image" class="card-img-top img-fluid" alt="{{ updatedProduct.name }}">
+      <img [src]="updatedProduct.image" class="img-top img-fluid" alt="{{ updatedProduct.name }}">
       <div class="form-group">
         <label for="productName">Product Name</label>
         <input type="text" class="form-control" id="productName" disabled [(ngModel)]="updatedProduct.name" name="name" required>
@@ -58,7 +57,4 @@
       <button type="submit" class="btn btn-success" (click)="updateProductBuy(updatedProduct)">Update</button>
     </form>
   </div>
-  
 </div>
-
-</body>

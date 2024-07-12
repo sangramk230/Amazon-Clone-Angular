@@ -15,7 +15,7 @@ import { AdminService } from '../admin.service';
 })
 export class HomeComponent {
 
-  product:Product[]=[];
+  products:Product[]=[];
   selectedProduct:Product = new Product(0,0,'','',0,'','',0,'',0,'','','','');
 
   constructor(private router: Router,private productService: ProductService){
@@ -30,9 +30,9 @@ export class HomeComponent {
   viewProduct(){
     this.productService.viewProduct().subscribe(
       (data:Product[])=>{
-        this.product=data;
-        for(let products of this.product){
-          products.image = 'data:image/png;base64,' + products.image;
+        this.products=data;
+        for(let product of this.products){
+          product.image = 'data:image/png;base64,' + product.image;
         }
       }
     );

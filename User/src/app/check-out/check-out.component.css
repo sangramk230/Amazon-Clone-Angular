@@ -1,15 +1,63 @@
-img{
-    width: 90px;
-    height: 100px;
+body {
+  animation: slideIn 0.5s ease-in-out;
+  background-color: #f8f9fa;
 }
-@keyframes slideIn {
-    from { opacity: 0; }
-    to { opacity: 2; }
-  }
 
-  .navbar-nav .nav-item {
-    animation: slideIn 0.3s ease-in-out;
-  }
-  body{
-    animation: slideIn 0.5s ease-in-out;
-  }
+.card {
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 12px;
+  background: white;
+}
+
+.card:hover {
+  transform: translateY(-10px) rotate(1deg);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+}
+
+.img-top {
+  width: 100px;
+  height: 100px;
+  transition: transform 0.3s ease;
+  border-radius: 8px;
+}
+
+.table {
+  transition: background-color 0.3s;
+  border-collapse: separate;
+  border-spacing: 0 10px; 
+}
+
+.table th, .table td {
+  border-radius: 8px; 
+}
+
+.table tr:hover {
+  background-color: #e9ecef;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  transition: background-color 0.3s, transform 0.3s;
+  border-radius: 8px;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.form-control {
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+@keyframes slideIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

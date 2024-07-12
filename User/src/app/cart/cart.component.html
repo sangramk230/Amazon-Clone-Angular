@@ -1,12 +1,12 @@
-<body class="d-flex justify-content-center align-items-center">
-  <div>
-    <div class="container-fluid my-orders text-center bg-white text-black py-2">
+  <div class="container-fluid my-orders text-center bg-white text-black py-2 shadow" >
+    <div >
       <table class="table table-bordered cursor-pointer">
         <thead class="thead-light">
           <tr>
             <th scope="col">Product Image</th>
-            <th scope="col">Product Name</th>
             <th scope="col">Brand</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Description</th>
             <th scope="col">Quantity</th>
             <th scope="col">Price</th>
             <th scope="col">Actions</th>
@@ -17,13 +17,14 @@
             <td>
               <img [src]="product.image" class="img-fluid" alt="{{ product.name }}">
             </td>
-            <td>{{ product.name }}</td>
             <td>{{ product.brand }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{product.description}}</td>
             <td>
               <input class="w-50" type="number" min="1" [(ngModel)]="product.quantity" 
                 (input)="calculateSubtotal()" (change)="updateCart(product)">
             </td>
-            <td>{{ product.price | currency:'INR' }}</td>
+            <td>{{ product.quantity * product.price| currency:'INR' }}</td>
             <td>
               <button type="button" class="btn btn-primary p-2 m-1" 
                 (click)="deleteFromCart(product.productid)">Remove</button>
@@ -32,7 +33,7 @@
             </td>
           </tr>
           <tr>
-            <th colspan="4">Subtotal:</th>
+            <th colspan="5">Subtotal:</th>
             <td>{{ subtotal | currency:'INR' }}</td>
             <td><button class="btn btn-primary" (click)="loadAllProducts()">Buy All</button></td>
           </tr>
@@ -41,4 +42,3 @@
     </div>
   </div>
   
-</body>

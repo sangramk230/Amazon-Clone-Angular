@@ -1,0 +1,30 @@
+.table {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.table-hover tbody tr:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    background-color: #f9f9f9;
+}
+
+.table thead th {
+    background-color: #f1f1f1;
+    text-align: center;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody td {
+    transition: background-color 0.3s;
+}
+
+.table tbody tr:hover td {
+    background-color: #e9ecef;
+}
+
+.table tbody tr:hover {
+    cursor: pointer;
+}

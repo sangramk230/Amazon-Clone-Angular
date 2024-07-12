@@ -1,5 +1,5 @@
 <main class="container-fluid">
-  <table class="table table-bordered">
+  <table class="table table-bordered table-hover" style="margin-top: 2%;">
     <thead>
       <tr style="text-align: center;">
         <th>Id</th>
@@ -23,14 +23,14 @@
         <td>{{ product.contact }}</td>
         <td>{{ product.address }}</td>
         <td>
-          <select name="Approval" id="ap" [(ngModel)]="product.status">
+          <select name="Approval" id="ap" [(ngModel)]="product.status" class="select-approval">
             <option value="In Progress" disabled>In Progress</option>
             <option value="Approved">Approved</option>
             <option value="Ready for dispatch">Ready for dispatch</option>
             <option value="Partially dispatched">Partially dispatched</option>
             <option value="Delivered">Delivered</option>
           </select>
-        </td>
+        </td>        
         <td>
           <button class="btn btn-primary" (click)="actionOnApproval(product)">Approve</button>
         </td>

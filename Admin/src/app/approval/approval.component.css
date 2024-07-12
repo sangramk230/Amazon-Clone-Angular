@@ -1,0 +1,37 @@
+.table {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.table-hover tbody tr:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.table th {
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+.select-approval {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.select-approval:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.btn-primary {
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}

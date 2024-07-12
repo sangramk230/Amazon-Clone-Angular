@@ -1,29 +1,37 @@
+<div class="container mt-4">
+  <div class="row mb-3">
+    <div class="col-md-8 offset-md-2">
+      <input type="search" class="form-control" placeholder="Search products..." [(ngModel)]="searchQuery" (input)="search()">
+    </div>
+  </div>
 
-<div class="text-center">
-  <input class="w-50 h-10 text-center border-secondary-subtle" type="search" placeholder="Search" aria-label="Search"  [(ngModel)]="searchQuery" (input)="search()" name="searchQuery" style="border: none;">
-</div>
-<body class="d-flex justify-content-center align-items-center ">
-  <div class="container">
-    <div class="row">
-      <div *ngIf="searchResults.length === 0 && searchQuery" class="col-12">
-        <p class="text-center text-warning" style="font-size: 14px; font-weight: bold;">Search products No found</p>
-        <hr class="w-100 " >
+  <div class="row">
+    <div class="col-12">
+      <div *ngIf="searchResults.length === 0 && searchQuery" class="alert alert-warning">
+        No products found
       </div>
-      <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4" *ngFor="let product of productsToDisplay">
-        <div class="card p-2 h-100 justify-content-center">
-          <img class="card-img-top align-self-center" [src]="product.image" alt="{{product.name}}">
-          <div class="card-body d-flex flex-column">
-            <h6 class="card-title">{{product.name}}</h6>
-            <div class="mt-auto align-self-end">
-              <p class="card-text"><strong>Price:</strong> {{product.price | currency:'INR'}}</p>
-              <a class="btn btn-primary m-2" (click)="addToCart(product)">Cart</a>
-              <a class="btn btn-primary m-2" (click)="proceedToBuy(product)">Buy</a>
-            </div>
+    </div>
+  </div>
+</div>
+<div style="margin-top: 2%;margin-left: 3%; margin-right: 3%;">
+  <div class="row">
+    <div *ngFor="let product of productsToDisplay" class="col-lg-3 col-md-6 mb-4">
+      <div class="card shadow-sm border-light product-card">
+        <img [src]="product.image" class="img-top" alt="{{ product.name }}">
+        <p>
+          <strong>Brand:</strong> {{ product.brand }} <br>
+        </p>
+        <div class="card-body">
+          <h6 class="card-title">{{ product.name }}</h6>
+          <p class="card-text">
+            <strong>Price:</strong> {{ product.price | currency: 'INR' }}
+          </p>
+          <div class="button-container d-flex justify-content-between mt-2">
+            <button class="btn btn-warning" (click)="addToCart(product)">Add to Cart</button>
+            <button class="btn btn-success" (click)="proceedToBuy(product)">Buy Now</button>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  
-</body>
+</div>
