@@ -74,7 +74,10 @@ loadCategory(){
   this.productService.viewCategory().subscribe(
     (data)=>{
       this.category=data;
+    },error =>{
+      this.router.navigateByUrl('/admin/login');
     }
+    
   );
 }
 }

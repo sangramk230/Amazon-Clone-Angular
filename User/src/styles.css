@@ -1,4 +1,24 @@
-body{
-    border: none;
-    background-color: white;
-}
+@keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  body {
+    background-color: #ffffff;
+    font-family: 'Times New Roman', Times, serif;
+    animation: slideIn 0.5s ease-in-out;
+    min-height: 100vh; 
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #343a40;
+  }
+  

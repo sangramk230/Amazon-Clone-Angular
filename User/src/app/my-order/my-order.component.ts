@@ -29,7 +29,6 @@ export class MyOrderComponent {
         this.second = false;
         this.products = data;
       },error => {
-        alert("Please Login");
         this.router.navigateByUrl('/user/login');
       }
       

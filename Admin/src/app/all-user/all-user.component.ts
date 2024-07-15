@@ -3,6 +3,7 @@ import { Admin } from '../admin';
 import { AdminService } from '../admin.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-user',
@@ -13,13 +14,16 @@ import { FormsModule } from '@angular/forms';
 })
 export class AllUserComponent {
 userAll :Admin[]=[];
-constructor(private adminService:AdminService){
+constructor(private adminService:AdminService,private router:Router) {
   this.allUsers();
 }
 allUsers(){
   this.adminService.userAllAccount().subscribe(
-    (data:Admin[])=>
+    (data:Admin[])=>{
       this.userAll=data
+    },error =>{
+      this.router.navigateByUrl('/admin/login');
+    }
   );
 }
 }

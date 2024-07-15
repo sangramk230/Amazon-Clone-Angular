@@ -1,31 +1,25 @@
-<main class="container-fluid">
-  <table class="table table-bordered table-hover">
-    <thead>
-      <tr style="text-align: center;">
-        <th>Image</th>
-        <th>Name</th>
-        <th>Brand</th>
-        <th>Price</th>
-        <th>Category</th>
-        <th>Description</th>
-        <th>Quantity</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let product of products" class="table-row">
-        <td><img [src]="product.image" alt="image" class="product-image"></td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.brand }}</td>
-        <td>{{ product.price | currency: 'INR' }}</td>
-        <td>{{ product.category }}</td>
-        <td>{{ product.description }}</td>
-        <td>{{ product.quantity }}</td>
-        <td>
-          <button class="btn btn-danger m-1" (click)="delProduct(product.productid)">Delete</button>
-          <button class="btn btn-warning m-1" (click)="loadUpdateProduct(product)">Update</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<main>
+  <div class="row" style="margin: 2% 1%;">
+    <div *ngFor="let product of products" class="col-lg-3 col-md-6 mb-4">
+      <div class="card shadow-sm border-light product-card">
+        <img [src]="product.image" class="product-image card-img" alt="{{ product.name }}">
+        <div class="card-body">
+          <h6 class="card-title">{{ product.name }}</h6>
+          <p><strong>Category:</strong> {{ product.category }}</p>
+          <p class="card-text"><strong>Price:</strong> {{ product.price | currency: 'INR' }}</p>
+          <p class="card-text"><strong>Description:</strong> {{ product.description }}</p>
+          <p class="card-text"><strong>Quantity:</strong> {{ product.quantity }}</p>
+          <p class="card-text text-success">In Stock</p>
+        </div>
+        <div class="d-flex justify-content-start mt-0">
+          <a (click)="delProduct(product.productid)" class="btn btn-action">
+            Delete
+          </a>
+          <a (click)="loadUpdateProduct(product)" class="btn btn-action">
+           Update
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>

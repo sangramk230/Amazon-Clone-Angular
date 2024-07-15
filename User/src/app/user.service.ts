@@ -21,4 +21,7 @@ export class UserService {
   userProfileUpdate(user:User){
     return this.http.put<any>("http://localhost:8080/api/profileUpdate",user);
   }
+  logout(){
+    return this.http.get("http://localhost:8080/api/logout");
+  }
 }

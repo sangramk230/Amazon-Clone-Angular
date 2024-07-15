@@ -5,31 +5,43 @@
 
 main {
   animation: slideIn 0.5s ease-in-out;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
-
-.table {
-  border-collapse: separate;
-  border-spacing: 0 10px;
+p{
+  font-size: 14px;
 }
-
-.table-row {
+.product-card {
   transition: transform 0.3s, box-shadow 0.3s;
-  border-radius: 8px; 
-  background-color: #fff; 
+  border-radius: 8px;
+  background-color: #fff;
+  margin-bottom: 5px;
+  height: 410px;
 }
 
-.table-row:hover {
-  transform: translateY(-5px); 
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); 
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .product-image {
-  width: 80px;
-  height: 80px;
-  border-radius: 8px; 
+  width: 90px;
+  height: 90px;
+  border-radius: 8px;
   transition: transform 0.3s;
 }
 
 .product-image:hover {
-  transform: scale(1.1); 
+  transform: scale(1.1);
+}
+
+.product-details {
+  flex: 1;
+}
+
+.btn-action {
+  color: green;
+  margin: 1px;
+  cursor: pointer;
 }

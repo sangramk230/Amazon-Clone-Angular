@@ -23,5 +23,8 @@ export class AdminService {
   userAllAccount(){
     return this.http.get<Admin[]>("http://localhost:8081/api/admin/allUsers");
   }
+  logout(){
+    return this.http.get("http://localhost:8081/api/admin/logout");
+  }
 }
 

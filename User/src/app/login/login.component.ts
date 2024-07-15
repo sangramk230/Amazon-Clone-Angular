@@ -15,7 +15,7 @@ import { User } from '../user';
 export class LoginComponent {
   signupDiv: boolean = false;
   loginDiv: boolean = true;
-  user: User = new User(0,'','',0,'','','','', '');
+  user: User = new User(0,'','',91,'','','','', '');
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -65,14 +65,12 @@ export class LoginComponent {
     this.userService.userLogin(this.user.email, this.user.password).subscribe(
       next => {
         if (next) {
-          alert('Login successful!');
           this.router.navigateByUrl('/user/home');
         } else {
           alert('Wrong Details. Please try again.');
         }
       },
       error => {
-        console.error('Error logging in:', error);
         alert('Login failed. Please try again.');
       }
     );

@@ -5,6 +5,7 @@ import { ProductService } from '../product.service';
 import { Product } from '../product';
 import { Router } from '@angular/router';
 import { Categories } from '../categories';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-home',
@@ -21,9 +22,11 @@ export class HomeComponent {
   searchQuery: string = '';
   static selectedProduct: Product | null = null;
   price: number = 0;
+  first : boolean= true;
+  second: boolean = false;
 
   constructor(private productService: ProductService, private router: Router) {
-    this.loadAllProducts();
+     this.loadAllProducts();
   }
 
   loadAllProducts() {
@@ -34,18 +37,23 @@ export class HomeComponent {
         image: 'data:image/jpeg;base64,' + product.image
       }));
       this.productsToDisplay = this.products;
-    });
+    }
+  );
   }
 
+  loadHome(){
+    this.second = true;
+    this.first = false;
+  }
+  
   addToCart(product: Product) {
+    product.quantity = 1;
     this.productService.addProductToCart(product).subscribe(
       () => {
-        alert('Product added to cart');
+       
         this.router.navigateByUrl('/user/cart');
       },
       error => {
-        console.error('Error adding product to cart: ', error);
-        alert('Please login');
         this.router.navigate(['/login']);
       }
     );
@@ -67,11 +75,9 @@ export class HomeComponent {
             ...product,
             image: 'data:image/jpeg;base64,' + product.image
           }));
-
           this.productsToDisplay = this.searchResults.length > 0 ? this.searchResults : this.products;
         },
         error => {
-          console.error('Error searching for products: ', error);
           this.productsToDisplay = this.products;
         }
       );

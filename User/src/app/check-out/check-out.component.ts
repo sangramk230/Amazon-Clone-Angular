@@ -48,10 +48,6 @@ export class CheckOutComponent implements OnInit {
       () => {
         alert('Product purchased successfully');
         this.router.navigate(['/user/my-order']);
-      },
-      error => {
-        alert('Please try again later.');
-        this.router.navigate(['/user/login']);
       }
     );
   }
@@ -68,10 +64,6 @@ export class CheckOutComponent implements OnInit {
 
         alert('Products purchased successfully');
         this.router.navigate(['/user/my-order']);
-      },
-      error => {
-        alert('Error purchasing products. Please try again later.');
-        this.router.navigate(['/user/login']);
       }
     );
   }

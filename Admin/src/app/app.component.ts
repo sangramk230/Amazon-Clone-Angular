@@ -45,4 +45,6 @@ export class AppComponent{
     this.router.navigateByUrl('/admin/approval').then(()=>{
       window.location.replace('/admin/approval');})
   }
+
+
 }

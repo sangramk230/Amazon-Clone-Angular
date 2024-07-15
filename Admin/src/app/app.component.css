@@ -1,20 +1,26 @@
 .navbar {
+  background-color: #e0e0e0; 
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
 }
 
-.nav-link {
-  transition: transform 0.3s, color 0.3s;
+.navbar .nav-link {
+  font-weight: 500;
+  color: #000000; 
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.nav-link:hover {
-  transform: translateY(-3px);
-  color: #14c3f4; 
+.navbar .nav-link:hover {
+  color: #008db1;
+  transform: translateY(-2px);
 }
 
-.navbar-toggler {
-  border: none; 
+@keyframes slideIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.navbar-toggler:focus {
-  outline: none;
+.footer {
+  background-color: #e0e0e0; 
+  padding: 1rem;
 }

@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Product } from './product';
 import { Categories } from './categories';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,8 @@ export class AppComponent implements OnInit {
   products: Product[] = [];
   second: boolean = false;
 
-  constructor(private router: Router, private productService: ProductService) {}
+
+  constructor(private router: Router, private productService: ProductService,private userService:UserService) {}
   ngOnInit() {
     this.viewCategory();
   }
@@ -45,6 +47,7 @@ export class AppComponent implements OnInit {
   }
 
   logout() {
+    this.userService.logout().subscribe();
     this.router.navigateByUrl('/user/login').then(()=>{
       window.location.replace('/user/login');})
   }
@@ -82,16 +85,15 @@ export class AppComponent implements OnInit {
         this.router.navigateByUrl('/user/cart');
       },
       error => {
-        console.error('Error adding product to cart: ', error);
-        alert('Please login');
+       
         this.router.navigate(['/login']);
       }
     );
   }
-
   proceedToBuy(product: Product) {
     product.quantity = 1;
     ProductService.product = product;
     this.router.navigateByUrl('/user/check');
   }
+
 }

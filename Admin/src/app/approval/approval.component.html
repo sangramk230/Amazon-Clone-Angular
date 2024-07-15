@@ -1,5 +1,5 @@
 <main class="container-fluid">
-  <table class="table table-bordered table-hover" style="margin-top: 2%;">
+  <table class="table table-hover" style="margin-top: 2%; border: none;">
     <thead>
       <tr style="text-align: center;">
         <th>Id</th>
@@ -15,6 +15,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let product of products">
+        <input type="img" [(ngModel)]="product.image" (change)="handleFileInput($event)" hidden>
         <td>{{ product.productid }}</td>
         <td>{{ product.name }}</td>
         <td>{{ product.price }}</td>
@@ -23,7 +24,7 @@
         <td>{{ product.contact }}</td>
         <td>{{ product.address }}</td>
         <td>
-          <select name="Approval" id="ap" [(ngModel)]="product.status" class="select-approval">
+          <select name="Approval" [(ngModel)]="product.status" class="select-approval">
             <option value="In Progress" disabled>In Progress</option>
             <option value="Approved">Approved</option>
             <option value="Ready for dispatch">Ready for dispatch</option>
@@ -32,7 +33,7 @@
           </select>
         </td>        
         <td>
-          <button class="btn btn-primary" (click)="actionOnApproval(product)">Approve</button>
+          <a class="link-approve" (click)="actionOnApproval(product)">Approve</a>
         </td>
       </tr>
     </tbody>

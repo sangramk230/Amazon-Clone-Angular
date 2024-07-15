@@ -7,29 +7,10 @@
   overflow: hidden;
 }
 
-.product-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  border-color: #007bff;
-}
-
 img.img-top {
   width: 100px;
   height: 100px;
   transition: transform 0.3s ease;
-}
-
-.product-card:hover img.img-top {
-  transform: scale(1.1);
-}
-
-.button-container {
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.product-card:hover .button-container {
-  opacity: 1;
 }
 
 .btn-primary {
@@ -38,18 +19,11 @@ img.img-top {
   transition: background-color 0.3s ease;
 }
 
-.btn-primary:hover {
-  background-color: #0056b3;
-}
 
 .btn-success {
   background-color: #28a745;
   border: none;
   transition: background-color 0.3s ease;
-}
-
-.btn-success:hover {
-  background-color: #218838;
 }
 
 .card-body {
@@ -72,6 +46,7 @@ input.form-control:focus {
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
+/* Animation */
 @keyframes slideIn {
   from { opacity: 0; }
   to { opacity: 1; }

@@ -1,95 +1,46 @@
+
 .navbar {
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #ddd;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+  background-color: #e0e0e0; 
 }
 
-.navbar:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.navbar-nav .nav-link {
-  color: #007bff;
+.navbar .nav-link {
+  font-weight: 500;
+  color: #000000; 
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.navbar-nav .nav-link:hover {
-  color: #0056b3;
+.navbar .nav-link:hover {
+  color: #008db1;
   transform: translateY(-2px);
 }
 
-
+.navbar .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
 .product-card {
-  width: 280px;
+  margin-top: 20px;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   transition: transform 0.3s, box-shadow 0.3s;
   position: relative;
   overflow: hidden;
+  height: 300px; 
 }
 
-.product-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  border-color: #007bff;
-}
-
-img.img-top {
-  width: 100px;
-  height: 100px;
+.img-top {
+  margin: 1px;
+  width: 90px;
+  height: 90px; 
   transition: transform 0.3s ease;
-}
-
-.product-card:hover img.img-top {
-  transform: scale(1.1);
-}
-
-.button-container {
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.product-card:hover .button-container {
-  opacity: 1;
-}
-
-.btn-warning {
-  background-color: #ffc107;
-  border: none;
-  transition: background-color 0.3s ease;
-}
-
-.btn-warning:hover {
-  background-color: #e0a800;
-}
-
-.btn-success {
-  background-color: #28a745;
-  border: none;
-  transition: background-color 0.3s ease;
-}
-
-.btn-success:hover {
-  background-color: #218838;
 }
 
 .card-body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 200px; 
 }
 
-@keyframes slideIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-body {
-  animation: slideIn 0.5s ease-in-out;
-}
-
-.navbar-nav .nav-item {
-  animation: slideIn 0.3s ease-in-out;
+.button-container {
+  display: flex;
+  justify-content: space-between;
 }

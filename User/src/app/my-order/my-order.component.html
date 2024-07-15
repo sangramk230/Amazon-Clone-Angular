@@ -1,14 +1,13 @@
-<div *ngIf="first" style="margin-top: 2%; margin-left: 3%; margin-right: 3%;">
+<!-- Order Page Layout -->
+<div *ngIf="first" style="margin: 2% 3%;">
   <div class="row">
     <div *ngFor="let product of products" class="col-lg-3 col-md-6 mb-4">
       <div class="card shadow-sm border-light product-card">
         <img [src]="product.image" class="img-top" alt="{{ product.name }}">
-        <p>
-          <strong>Brand:</strong> {{ product.brand }} <br>
-        </p>
         <div class="card-body">
           <h6 class="card-title">{{ product.name }}</h6>
           <p class="card-text">
+            <strong>Brand:</strong> {{ product.brand }} <br>
             <strong>Price:</strong> {{ product.price | currency: 'INR' }} <br>
             <strong>Quantity:</strong> {{ product.quantity }}<br>
             <strong>Address:</strong> {{ product.address }}<br>
@@ -25,6 +24,8 @@
     </div>
   </div>
 </div>
+
+<!-- Update Product Form -->
 <div class="container w-25" *ngIf="second">
   <div class="mt-4">
     <form *ngIf="updatedProduct">

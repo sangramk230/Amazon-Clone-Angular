@@ -34,6 +34,8 @@ export class HomeComponent {
         for(let product of this.products){
           product.image = 'data:image/png;base64,' + product.image;
         }
+      },error =>{
+        this.router.navigateByUrl('/admin/login');
       }
     );
   }

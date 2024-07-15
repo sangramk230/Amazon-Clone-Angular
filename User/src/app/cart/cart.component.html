@@ -1,44 +1,68 @@
-  <div class="container-fluid my-orders text-center bg-white text-black py-2 shadow" >
-    <div >
-      <table class="table table-bordered cursor-pointer">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col">Product Image</th>
-            <th scope="col">Brand</th>
-            <th scope="col">Product Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Price</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let product of products">
-            <td>
-              <img [src]="product.image" class="img-fluid" alt="{{ product.name }}">
-            </td>
-            <td>{{ product.brand }}</td>
-            <td>{{ product.name }}</td>
-            <td>{{product.description}}</td>
-            <td>
-              <input class="w-50" type="number" min="1" [(ngModel)]="product.quantity" 
-                (input)="calculateSubtotal()" (change)="updateCart(product)">
-            </td>
-            <td>{{ product.quantity * product.price| currency:'INR' }}</td>
-            <td>
-              <button type="button" class="btn btn-primary p-2 m-1" 
-                (click)="deleteFromCart(product.productid)">Remove</button>
-              <button type="button" class="btn btn-primary p-2 m-1" 
-                (click)="loadCheckout(product)">Buy</button>
-            </td>
-          </tr>
-          <tr>
-            <th colspan="5">Subtotal:</th>
-            <td>{{ subtotal | currency:'INR' }}</td>
-            <td><button class="btn btn-primary" (click)="loadAllProducts()">Buy All</button></td>
-          </tr>
-        </tbody>
-      </table>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8 col-md-12">
+      <div class="row">
+        <h4>Shopping Cart</h4>
+        <hr class="my-1">
+        <div class="col-12 mb-0" *ngFor="let product of products">
+          <div class="card product-card d-flex flex-row align-items-center border-0">
+            <img [src]="product.image" alt="{{ product.name }}" class="card-img-left" style="width: 100px; height: auto;">
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <span class="text-end">Price: {{ product.quantity * product.price | currency: 'INR' }}</span>
+              </div>
+              <p class="card-text">
+                <span>In stock</span><br>
+                <span>Gift option not available</span>
+              </p>
+              <div class="d-flex justify-content-start mt-2">
+                <input type="number" min="1" [(ngModel)]="product.quantity" (input)="calculateSubtotal()" (change)="updateCart(product)" class="form-control">
+                <a (click)="deleteFromCart(product.productid)" class="text-success ms-3 me-3 cursor-pointer">Delete</a>
+                <a (click)="loadCheckout(product)" class="text-success cursor-pointer">Checkout</a>
+              </div>
+              <hr class="my-2">
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="d-flex justify-content-end align-items-center mt-2">
+            <h6 class="mb-0 me-2">Subtotal:</h6>
+            <p class="mb-0">{{ subtotal | currency: 'INR' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-12">
+      <div class="card p-3 mb-3 mt-5" style="border: none;box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);">
+        <h5>Cart Summary</h5>
+        <div class="d-flex justify-content-between mt-2">
+          <h6>Subtotal({{ item }} items):</h6>
+          <span>{{ subtotal | currency: 'INR' }}</span>
+        </div>
+        <button class="btn btn-primary mt-3" (click)="loadAllProducts()">Proceed to checkout</button>
+      </div>
+
+      <div class="card p-3" style="border: none;">
+        <h5>Featured Products</h5>
+        <div *ngFor="let product of productsToDisplay.slice(4, 7)" class="card shadow-sm mb-3" style="border: none;">
+          <img [src]="product.image" alt="{{ product.name }}" style="width: 70px; height: 65px;">
+          <div class="card-body">
+            <p class="card-text"><strong>Brand:</strong> {{ product.brand }}</p>
+            <h6 class="card-title small-text">{{ product.name }}</h6>
+            <p class="card-text small-text"><strong>Price:</strong> {{ product.price | currency: 'INR' }}</p>
+            <div class="cdn-icons justify-content-end align-items-end mt-2">
+              <a class="icon-button">
+                <i class="fas fa-cart-plus" (click)="addToCart(product)"></i>
+              </a>
+              <a class="icon-button ms-2">
+                <i class="fas fa-shopping-bag" (click)="proceedToBuy(product)"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  
+</div>

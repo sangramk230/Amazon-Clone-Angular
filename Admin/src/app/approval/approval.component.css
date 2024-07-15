@@ -1,5 +1,6 @@
 .table {
-    border-radius: 8px;
+    border-radius: 20px;
+    border: none;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -27,11 +28,13 @@
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-.btn-primary {
-    transition: background-color 0.3s, transform 0.3s;
+.link-approve {
+    color: green;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
 }
 
-.btn-primary:hover {
-    background-color: #0056b3;
+.link-approve:hover {
+    color: darkgreen;
     transform: translateY(-2px);
 }

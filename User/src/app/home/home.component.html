@@ -1,37 +1,98 @@
-<div class="container mt-4">
-  <div class="row mb-3">
-    <div class="col-md-8 offset-md-2">
-      <input type="search" class="form-control" placeholder="Search products..." [(ngModel)]="searchQuery" (input)="search()">
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-12">
-      <div *ngIf="searchResults.length === 0 && searchQuery" class="alert alert-warning">
-        No products found
+<main>
+  <div class="container mt-0" *ngIf="first">
+    <div class="jumbotron text-center animate__animated animate__fadeIn">
+      <h1>Welcome to Our E-Commerce Website</h1>
+      <p>Find the best products here</p>
+      <div class="d-flex justify-content-center align-items-center">
+        <a (click)="loadHome()" class="btn btn-primary btn-lg">Shop Now</a>
       </div>
     </div>
-  </div>
-</div>
-<div style="margin-top: 2%;margin-left: 3%; margin-right: 3%;">
-  <div class="row">
-    <div *ngFor="let product of productsToDisplay" class="col-lg-3 col-md-6 mb-4">
-      <div class="card shadow-sm border-light product-card">
-        <img [src]="product.image" class="img-top" alt="{{ product.name }}">
-        <p>
-          <strong>Brand:</strong> {{ product.brand }} <br>
-        </p>
-        <div class="card-body">
-          <h6 class="card-title">{{ product.name }}</h6>
-          <p class="card-text">
-            <strong>Price:</strong> {{ product.price | currency: 'INR' }}
-          </p>
-          <div class="button-container d-flex justify-content-between mt-2">
-            <button class="btn btn-warning" (click)="addToCart(product)">Add to Cart</button>
-            <button class="btn btn-success" (click)="proceedToBuy(product)">Buy Now</button>
+    <div class="d-flex align-content-center justify-content-center">
+      <img src="assets/home/D132995370_Homepage_DesktopHeroTemplate_3000x1200._CB557152260_.jpg" alt="Animated GIF" class="animated-gif">
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <div class="container">
+          <input type="search" class="form-control mb-3" placeholder="Search products..." [(ngModel)]="searchQuery" (input)="search()">
+          <div *ngIf="searchResults.length === 0 && searchQuery" class="alert alert-warning ">
+            No products found. Please try searching with different keywords.
+          </div>
+          <div *ngFor="let result of searchResults" class="card mb-2 product-card ">
+            <div class="cdn-icons">
+              <a (click)="addToCart(result)" class="icon-button">
+                <i class="fas fa-cart-plus"></i>
+              </a>
+              <a (click)="proceedToBuy(result)" class="icon-button">
+                <i class="fas fa-shopping-bag"></i>
+              </a>
+            </div>
+            <img [src]="result.image" class="img-top" alt="{{ result.name }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ result.name }}</h5>
+              <p class="card-text">{{ result.description }}</p>
+              <p class="card-text"><strong>Price:</strong> {{ result.price | currency: 'INR' }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="container p-4">
+          <div *ngFor="let product of products.slice(0, 4); let i = index" class="row mb-3 " [ngClass]="{'flex-row-reverse': i % 2 !== 0}">
+            <div class="col-6 d-flex justify-content-center align-items-start">
+              <img [src]="product.image" class="img-fluid" />
+            </div>
+            <div class="col-6 d-flex align-items-center">
+              <p class="ms-3">{{ product.description }}</p>
+            </div>
+            <div class="ic">
+              <a (click)="addToCart(product)" class="icon-button">
+                <i class="fas fa-cart-plus"></i>
+              </a>
+              <a (click)="proceedToBuy(product)" class="icon-button">
+                <i class="fas fa-shopping-bag"></i>
+              </a>
+            </div>
+            <hr>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+
+  <div *ngIf="second">
+    <div class="container mt-4">
+      <div class="row mb-3">
+        <div class="col-md-8 offset-md-2">
+          <input type="search" class="form-control" placeholder="Search products..." [(ngModel)]="searchQuery" (input)="search()">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div *ngIf="searchResults.length === 0 && searchQuery" class="alert alert-warning animate__animated animate__fadeIn">
+            No products found.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin: 2% 3%;">
+      <div *ngFor="let product of productsToDisplay" class="col-lg-3 col-md-6 mb-4 animate__animated animate__fadeIn">
+        <div class="card shadow-sm border-light product-card">
+          <div class="cdn-icons">
+            <a (click)="addToCart(product)" class="icon-button">
+              <i class="fas fa-cart-plus"></i>
+            </a>
+            <a (click)="proceedToBuy(product)" class="icon-button">
+              <i class="fas fa-shopping-bag"></i>
+            </a>
+          </div>
+          <img [src]="product.image" class="img-top" alt="{{ product.name }}">
+          <p><strong>Brand:</strong> {{ product.brand }}</p>
+          <div class="card-body">
+            <h6 class="card-title">{{ product.name }}</h6>
+            <p class="card-text"><strong>Price:</strong> {{ product.price | currency: 'INR' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

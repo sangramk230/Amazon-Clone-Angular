@@ -15,21 +15,37 @@ import { max } from 'rxjs';
 })
 export class CartComponent {
   products: Product[] = [];
+  productsToDisplay: Product[] = [];
   total: number = 0;
+  item:number=0;
   subtotal: number = 0;
 
   constructor(private router: Router, private productService: ProductService) {
     this.viewProductCart();
+    this.viewAllProducts();
   }
 
+  viewAllProducts() {
+    this.productService.allProduct().subscribe(
+      (data: Product[]) => {
+      this.productsToDisplay = data.map(product => ({
+        ...product,
+        image: 'data:image/jpeg;base64,' + product.image
+      }));
+      
+    }
+  );
+  }
   viewProductCart(): void {
     this.productService.viewProductCart().subscribe(
       (data: Product[]) => {
         this.products = data;
+        for(let pr of this.products){
+          this.item +=1;
+        }
         this.calculateSubtotal();
       },
       error => {
-        alert('Login Please.');
         this.router.navigate(['/user/login']);
       }
     );
@@ -38,11 +54,12 @@ export class CartComponent {
   deleteFromCart(productId: number): void {
     this.productService.delCartProductById(productId).subscribe(
       () => {
+         this.item= this.item - 1;
         alert('Product removed from cart successfully');
-        this.viewProductCart();
+          window.location.replace('/user/cart'); 
       },
       error => {
-        console.error('Error removing product from cart:', error);
+        this.router.navigate(['/user/login']);
       }
     );
   }
@@ -73,5 +90,25 @@ loadAllProducts(): void {
         console.error('Error updating product in cart:', error);
       }
     );
+  }
+  addToCart(product: Product) {
+    product.quantity = 1;
+    this.productService.addProductToCart(product).subscribe(
+      () => {
+       
+        this.router.navigateByUrl('/user/cart').then(()=>{
+          window.location.replace('/user/cart');})
+      },
+      error => {
+        console.error('Error adding product to cart: ', error);
+        this.router.navigate(['/login']);
+      }
+    );
+  }
+
+  proceedToBuy(product: Product) {
+    product.quantity = 1;
+    ProductService.product = product;
+    this.router.navigateByUrl('/user/check');
   }
 }

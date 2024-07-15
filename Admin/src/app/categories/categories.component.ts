@@ -3,6 +3,7 @@ import { ProductService } from '../product.service';
 import { Category } from '../category';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -14,7 +15,7 @@ import { FormsModule } from '@angular/forms';
 export class CategoriesComponent {
   category:Category = new Category(0,'');
   categorys:Category[]=[];
-constructor(private productService:ProductService){
+constructor(private productService:ProductService,private router:Router){
   this.viewCategory();
 }
 
@@ -29,6 +30,8 @@ viewCategory(){
   this.productService.viewCategory().subscribe(
     (data)=>{
       this.categorys=data;
+    },error =>{
+      this.router.navigateByUrl('/admin/login');
     }
   );
 }

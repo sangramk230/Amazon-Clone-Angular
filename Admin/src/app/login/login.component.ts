@@ -15,14 +15,15 @@ import { AppComponent } from "../app.component";
 })
 export class LoginComponent {
   admin: Admin = new Admin(0,'','',0,'','','','', '');
-
   constructor(private adminService:AdminService , private router: Router) {
+    
   }
+
+
   login(): void {
     this.adminService.adminLogin(this.admin.email, this.admin.password).subscribe(
       next => {
         if (next) {
-          alert('Login successful!');
           AdminService.admin = this.admin;
           this.router.navigateByUrl('/admin/home');
         } else {

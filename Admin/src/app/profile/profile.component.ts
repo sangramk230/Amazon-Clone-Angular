@@ -58,6 +58,11 @@ export class ProfileComponent {
       this.uu = data;   
       window.location.reload();
     }
-  );  
+    );  
+    }
+    logout() {
+      this.adminService.logout().subscribe();
+      this.router.navigateByUrl('/admin/login').then(()=>{
+        window.location.reload();})
     }
   }

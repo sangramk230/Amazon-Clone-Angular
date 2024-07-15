@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <nav class="navbar navbar-expand-lg shadow">
     <div class="container-fluid">
       <a class="navbar-brand" (click)="loadHome()">Amazon-Clone</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,28 +40,36 @@
   </nav>
 </header>
 
-<div style="margin-top: 2%;margin-left: 5%; margin-right: 5%;" *ngIf="second">
-    <div class="row">
-      <div *ngFor="let product of products" class="col-lg-3 col-md-6 mb-4">
-        <div class="card shadow-sm border-light product-card">
-          <img [src]="product.image" class="img-top" alt="{{ product.name }}">
-          <p>
+<div class="container" *ngIf="second">
+  <div class="row">
+    <div *ngFor="let product of products" class="col-lg-3 col-md-6 mb-4">
+      <div class="card shadow-sm product-card">
+        <img [src]="product.image" class="img-top" alt="{{ product.name }}">
+        <div class="card-body">
+          <h6 class="card-title">{{ product.name }}</h6>
+          <p class="card-text mb-1">
             <strong>Brand:</strong> {{ product.brand }} <br>
+            <strong>Price:</strong> {{ product.price | currency: 'INR' }}
           </p>
-          <div class="card-body">
-            <h6 class="card-title">{{ product.name }}</h6>
-            <p class="card-text">
-              <strong>Price:</strong> {{ product.price | currency: 'INR' }}
-            </p>
-            <div class="button-container d-flex justify-content-between mt-2">
-              <button class="btn btn-warning" (click)="addToCart(product)">Add to Cart</button>
-              <button class="btn btn-success" (click)="proceedToBuy(product)">Buy Now</button>
-            </div>
+          <div class="button-container justify-content-end">
+            <a class="btn" (click)="addToCart(product)">
+              <i class="fas fa-cart-plus"></i>
+            </a>
+            <a class="btn" (click)="proceedToBuy(product)">
+              <i class="fas fa-shopping-bag"></i>
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div *ngIf="!second">
-    <router-outlet></router-outlet>
+</div>
+
+  <router-outlet *ngIf="!second"></router-outlet>
+
+
+<footer class="footer mt-4">
+  <div class="container text-center">
+    <p>&copy; 2024 My Awesome App. All rights reserved.</p>
   </div>
+</footer>

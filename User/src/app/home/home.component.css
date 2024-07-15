@@ -1,74 +1,68 @@
 
+
+.jumbotron {
+  background-color: #ffffff;
+  padding: 2rem 1rem;
+  color: #343a40;
+}
+
+.row {
+  margin-top: 2rem;
+}
+
+.btn-primary {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-primary:hover {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+h1 {
+  color: #007bff;
+}
+
 .product-card {
   width: 280px;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   transition: transform 0.3s, box-shadow 0.3s;
   position: relative;
-  overflow: hidden;
 }
 
-.product-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  border-color: #007bff;
-}
-
-img.img-top {
+.img-top {
   width: 100px;
   height: 100px;
   transition: transform 0.3s ease;
 }
 
-.product-card:hover img.img-top {
-  transform: scale(1.1);
+.icon-button {
+  margin-right: 10px;
+  font-size: 24px;
+  color: #978f8f;
+  transition: color 0.3s;
 }
 
-.button-container {
-  opacity: 0;
-  transition: opacity 0.3s;
+.icon-button:hover {
+  color: #141414;
 }
 
-.product-card:hover .button-container {
-  opacity: 1;
+.cdn-icons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
 }
 
-.btn-warning {
-  background-color: #ffc107;
-  border: none;
-  transition: background-color 0.3s ease;
+.img-fluid {
+  width: 150px;
+  height: 150px;
 }
 
-.btn-warning:hover {
-  background-color: #e0a800;
-}
-
-.btn-success {
-  background-color: #28a745;
-  border: none;
-  transition: background-color 0.3s ease;
-}
-
-.btn-success:hover {
-  background-color: #218838;
-}
-
-.card-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 200px; 
-}
-
-@keyframes slideIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-body {
+.animated-gif {
+  width: 100%; 
+  max-width: 1180px;
   animation: slideIn 0.5s ease-in-out;
-}
-
-.navbar-nav .nav-item {
-  animation: slideIn 0.3s ease-in-out;
 }
